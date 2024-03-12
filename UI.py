@@ -74,7 +74,8 @@ class mywindow(QtWidgets.QMainWindow):
         ]
         loader1_block = False
         loader1_heading_x = lambda iterator: \
-            ["Начало промежутка", "Конец промежутка", "Площадь, га"][iterator]
+            ["Урожайность, ц/га\nНачало промежутка", "Урожайность, ц/га\nКонец промежутка",
+             "Площадь, га"][iterator]
         loader1_types_matrix = [[int, int, float] for _ in range(loader1_m)]
 
         # loader2_n = self.variables.n
@@ -181,7 +182,7 @@ class Finish(QtWidgets.QDialog):
         self.ui.doubleSpinBox_3.setValue(round(self.parent.calculation.result[1], 2))
 
         self.ui.textEdit.setText(
-            f"Таким образом, с вероятностью γ = {round(self.parent.variables.alpha, 2)} - средняя урожайность пшеницы заключена в границах от {round(self.parent.calculation.result[0], 2)} ц до {round(self.parent.calculation.result[1], 2)} ц."
+            f"Таким образом, с вероятностью γ = {str(round(self.parent.variables.alpha, 2)).replace('.', ',')} - средняя урожайность пшеницы заключена в границах от {str(round(self.parent.calculation.result[0], 2)).replace('.', ',')} ц до {str(round(self.parent.calculation.result[1], 2)).replace('.', ',')} ц."
         )
 
         lst = []
@@ -216,9 +217,13 @@ class Finish(QtWidgets.QDialog):
         types_matrix_results_1 = types_matrix
         loader_results_1_block = True
         loader_results_1_heading_x = lambda iterator: \
-            ["Начало промежутка", "Конец промежутка", "Площадь, га", "Середина интервала",
-             f"y{get_sub('i')} * n{get_sub('i')}", f"(y{get_sub('i')} - x{get_sub('v')}){get_super('2')} * n{get_sub('i')}"][iterator]
-        loader_results_1_heading_y = lambda iterator: str(iterator)
+            ["Урожайность, ц/га\nНачало промежутка", "Урожайность, ц/га\nКонец промежутка",
+             f"Площадь N{get_sub('i')}, га", "Середина интервала",
+             f"y{get_sub('i')} * n{get_sub('i')}",
+             f"(y{get_sub('i')} - x{get_sub('v')}){get_super('2')} * n{get_sub('i')}"][iterator]
+        loader_results_1_heading_y = lambda iterator: \
+            ([str(i + 1) for i in range(self.parent.table_loader1.m)] +
+             ["Сумма", "Среднее\nзначение"])[iterator]
         self.table_loader_results_1 = TableLoader(
             self.parent, loader_results_1_n, loader_results_1_m, data=loader_results_1_data,
             block=loader_results_1_block,

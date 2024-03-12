@@ -246,7 +246,7 @@ class Ui_Form(object):
         font.setPointSize(14)
         self.doubleSpinBox_2.setFont(font)
         self.doubleSpinBox_2.setStyleSheet("color: black; background-color: white;")
-        self.doubleSpinBox_2.setDecimals(0)
+        self.doubleSpinBox_2.setDecimals(2)
         self.doubleSpinBox_2.setMinimum(-999999999.0)
         self.doubleSpinBox_2.setMaximum(999999999.0)
         self.doubleSpinBox_2.setSingleStep(0.01)
@@ -278,7 +278,7 @@ class Ui_Form(object):
         font.setPointSize(14)
         self.doubleSpinBox_3.setFont(font)
         self.doubleSpinBox_3.setStyleSheet("color: black; background-color: white;")
-        self.doubleSpinBox_3.setDecimals(0)
+        self.doubleSpinBox_3.setDecimals(2)
         self.doubleSpinBox_3.setMinimum(-999999999.0)
         self.doubleSpinBox_3.setMaximum(999999999.0)
         self.doubleSpinBox_3.setSingleStep(0.01)
@@ -356,7 +356,7 @@ class Ui_Form(object):
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Оценка параметров распределения урожайности и сахарной свеклы по данным выбора"))
+        Form.setWindowTitle(_translate("Form", "Определение доверительного интервала средней урожайности пшеницы"))
         self.label_34.setText(_translate("Form", "="))
         self.label_36.setText(_translate("Form", "<html><head/><body><p>Приближенное значение средней урожайности:</p></body></html>"))
         self.label_35.setText(_translate("Form", "ц"))
